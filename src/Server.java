@@ -19,4 +19,15 @@ public class Server {
         this.webpages[src].add(dest);
     }
 
+    public void printLinks() {
+        for (int i = 0; i < this.numberOfWebpages; i++) {
+            System.out.print("[v" + i + "]");
+            for (Integer webpageLinks : this.webpages[i]) {
+                System.out.print(" -> " + webpageLinks);
+            }
+            System.out.println();
+        }
+    }
+
+
 }

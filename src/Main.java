@@ -10,7 +10,7 @@ public class Main {
         Server server = new Server(webpages);
 
         createGraph(server);
-        printGraph(server);
+        server.printLinks();
 
     }
 
@@ -35,16 +35,6 @@ public class Main {
             tempLinks.clear();
         }
 
-    }
-
-    public static void printGraph(Server server) {
-        for (int i = 0; i < server.numberOfWebpages; i++) {
-            System.out.print("[v" + i + "]");
-            for (Integer webpageLinks : server.webpages[i]) {
-                System.out.print(" -> " + webpageLinks);
-            }
-            System.out.println("");
-        }
     }
 
 
