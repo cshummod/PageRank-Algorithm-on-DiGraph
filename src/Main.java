@@ -14,7 +14,7 @@ public class Main {
 
     }
 
-    public static void createGraph(Server server) {
+    /*public static void createGraph(Server server) {
         Random random = new Random();
         int r, size = server.numberOfWebpages;
         boolean check = false;
@@ -33,6 +33,22 @@ public class Main {
                 }
             }
             tempLinks.clear();
+        }*/
+
+    public static void createGraph(Server server) {
+        Random random = new Random();
+        int r, size = server.numberOfWebpages;
+        Set<Integer> tempLinks = new HashSet<Integer>();
+        int i = 0;
+        while (true) {
+            r = random.nextInt(size);
+            if (r != i && !tempLinks.contains(r)) {
+                tempLinks.add(r);
+                server.addEdge(i, r);
+                i++;
+                if (i == 5)
+                    break;
+            }
         }
 
     }
