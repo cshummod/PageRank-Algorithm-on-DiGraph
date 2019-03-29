@@ -15,13 +15,13 @@ public class Server {
     }
 
 
-    public void addEdge(int src, int dest) {
+    public void addLink(int src, int dest) {
         this.webpages[src].add(dest);
     }
 
     public void printLinks() {
         for (int i = 0; i < this.numberOfWebpages; i++) {
-            System.out.print("[v" + i + "]");
+            System.out.print(i);
             for (Integer webpageLinks : this.webpages[i]) {
                 System.out.print(" -> " + webpageLinks);
             }

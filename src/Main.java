@@ -1,20 +1,45 @@
-import java.util.HashSet;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        int webpages = 5;
+        int webpages = 4;
         Server server = new Server(webpages);
 
-        createGraph(server);
+        /*createGraph(server);
         server.printLinks();
+        PageRank pageRank = new PageRank(server);
+        pageRank.initializRanks();
+        pageRank.printRanks();
+        pageRank.updateRanks();
+        pageRank.printRanks();*/
+
+        //Project Example
+        testAlg(server);
+
 
     }
 
-    /*public static void createGraph(Server server) {
+    private static void testAlg(Server server) {
+        server.addLink(0, 1);
+        server.addLink(0, 2);
+        server.addLink(0, 3);
+        server.addLink(1, 0);
+        server.addLink(2, 0);
+        server.addLink(3, 0);
+
+
+        server.printLinks();
+        PageRank pageRank = new PageRank(server);
+        pageRank.initializRanks();
+        pageRank.updateRanks();
+        pageRank.printRanks();
+
+
+    }
+
+    public static void createGraph(Server server) {
         Random random = new Random();
         int r, size = server.numberOfWebpages;
         boolean check = false;
@@ -28,14 +53,15 @@ public class Main {
                     check = true;
                 }
                 if (r != i && check == true && !server.webpages[i].contains(r)) {
-                    server.addEdge(i, r);
+                    server.addLink(i, r);
                     check = false;
                 }
             }
             tempLinks.clear();
-        }*/
+        }
 
-    public static void createGraph(Server server) {
+    //Single Link
+    /*public static void createGraph(Server server) {
         Random random = new Random();
         int r, size = server.numberOfWebpages;
         Set<Integer> tempLinks = new HashSet<Integer>();
@@ -44,14 +70,14 @@ public class Main {
             r = random.nextInt(size);
             if (r != i && !tempLinks.contains(r)) {
                 tempLinks.add(r);
-                server.addEdge(i, r);
+                server.addLink(i, r);
                 i++;
                 if (i == 5)
                     break;
             }
         }
 
+    }*/
+
     }
-
-
 }
