@@ -65,7 +65,7 @@ public class PageRank {
         System.out.println("----------------------------------");
         DecimalFormat df = new DecimalFormat("#.00000");
         for (int i = 0; i < webpageRank.size(); i++) {
-            System.out.println("Webpage [" + i + "]= " + Double.parseDouble(df.format(webpageRank.get(i))));
+            System.out.println("Webpage[" + i + "]= " + Double.parseDouble(df.format(webpageRank.get(i))));
         }
     }
 }

@@ -20,10 +20,13 @@ public class Server {
     }
 
     public void printLinks() {
+        System.out.println("----------------------------------");
+        System.out.println("-----------Server Graph-----------");
+        System.out.println("----------------------------------");
         for (int i = 0; i < this.numberOfWebpages; i++) {
-            System.out.print(i);
+            System.out.print("Webpage[" + i + "]");
             for (Integer webpageLinks : this.webpages[i]) {
-                System.out.print(" -> " + webpageLinks);
+                System.out.print("->" + webpageLinks);
             }
             System.out.println();
         }

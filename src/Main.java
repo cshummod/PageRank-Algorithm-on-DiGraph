@@ -3,21 +3,24 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] args) {
+        int before = (int) System.currentTimeMillis();
 
-        int webpages = 4;
+        int webpages = 10;
         Server server = new Server(webpages);
 
-        /*createGraph(server);
+        createGraph(server);
         server.printLinks();
+
         PageRank pageRank = new PageRank(server);
         pageRank.initializRanks();
-        pageRank.printRanks();
         pageRank.updateRanks();
-        pageRank.printRanks();*/
+        pageRank.printRanks();
 
         //Project Example
-        testAlg(server);
+        //testAlg(server);
 
+        int after = (int) System.currentTimeMillis();
+        System.out.println("\nCompleted on: " + (after-before) + "ms.");
 
     }
 
@@ -60,7 +63,7 @@ public class Main {
             tempLinks.clear();
         }
 
-    //Single Link
+        //Single Link
     /*public static void createGraph(Server server) {
         Random random = new Random();
         int r, size = server.numberOfWebpages;
