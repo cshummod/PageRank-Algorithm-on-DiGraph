@@ -5,7 +5,7 @@ public class Main {
     public static void main(String[] args) {
         int before = (int) System.currentTimeMillis();
 
-        int webpages = 10;
+        int webpages = 1000;
         Server server = new Server(webpages);
 
         createGraph(server);
@@ -20,29 +20,34 @@ public class Main {
         //testAlg(server);
 
         int after = (int) System.currentTimeMillis();
-        System.out.println("\nCompleted on: " + (after-before) + "ms.");
+        System.out.println("\nCompleted on: " + (after - before) + "ms.");
 
     }
 
-    private static void testAlg(Server server) {
-        server.addLink(0, 1);
-        server.addLink(0, 2);
-        server.addLink(0, 3);
-        server.addLink(1, 0);
-        server.addLink(2, 0);
-        server.addLink(3, 0);
 
-
-        server.printLinks();
-        PageRank pageRank = new PageRank(server);
-        pageRank.initializRanks();
-        pageRank.updateRanks();
-        pageRank.printRanks();
-
-
-    }
-
+    //Single Link
     public static void createGraph(Server server) {
+        Random random = new Random();
+        int r, size = server.numberOfWebpages;
+        Set<Integer> tempLinks = new HashSet<Integer>();
+        int i = 0;
+        while (true) {
+            r = random.nextInt(size);
+            if (r != i && !tempLinks.contains(r)) {
+                tempLinks.add(r);
+                server.addLink(i, r);
+                i++;
+                if (i == size)
+                    break;
+            }
+            tempLinks.clear();
+        }
+
+    }
+
+
+    //Multiple Links
+    /*public static void createGraph(Server server) {
         Random random = new Random();
         int r, size = server.numberOfWebpages;
         boolean check = false;
@@ -62,25 +67,24 @@ public class Main {
             }
             tempLinks.clear();
         }
-
-        //Single Link
-    /*public static void createGraph(Server server) {
-        Random random = new Random();
-        int r, size = server.numberOfWebpages;
-        Set<Integer> tempLinks = new HashSet<Integer>();
-        int i = 0;
-        while (true) {
-            r = random.nextInt(size);
-            if (r != i && !tempLinks.contains(r)) {
-                tempLinks.add(r);
-                server.addLink(i, r);
-                i++;
-                if (i == 5)
-                    break;
-            }
-        }
-
     }*/
+    private static void testAlg(Server server) {
+        server.addLink(0, 1);
+        server.addLink(0, 2);
+        server.addLink(0, 3);
+        server.addLink(1, 0);
+        server.addLink(2, 0);
+        server.addLink(3, 0);
+
+
+        server.printLinks();
+        PageRank pageRank = new PageRank(server);
+        pageRank.initializRanks();
+        pageRank.updateRanks();
+        pageRank.printRanks();
+
 
     }
+
 }
+

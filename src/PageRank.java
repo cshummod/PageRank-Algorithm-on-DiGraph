@@ -1,4 +1,5 @@
 import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.HashMap;
 
 public class PageRank {
@@ -63,9 +64,11 @@ public class PageRank {
         System.out.println("----------------------------------");
         System.out.println("--------PageRank Algorithm--------");
         System.out.println("----------------------------------");
-        DecimalFormat df = new DecimalFormat("#.00000");
+        NumberFormat formatter = new DecimalFormat("0.00000000000");
+        String value;
         for (int i = 0; i < webpageRank.size(); i++) {
-            System.out.println("Webpage[" + i + "]= " + Double.parseDouble(df.format(webpageRank.get(i))));
+            value = formatter.format(webpageRank.get(i));
+            System.out.println("Webpage[" + i + "]= " + value);
         }
     }
 }
