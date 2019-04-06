@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/PageRank Algorithm using Graphs.iml" filepath="$PROJECT_DIR$/PageRank Algorithm using Graphs.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PageRank Algorithm on DiGraph.iml" filepath="$PROJECT_DIR$/PageRank Algorithm on DiGraph.iml" />
     </modules>
   </component>
 </project>
