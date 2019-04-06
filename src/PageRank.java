@@ -2,6 +2,10 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.HashMap;
 
+/**
+ * @author Mohammed
+ */
+
 public class PageRank {
     Server server;
     HashMap<Integer, Double> webpageRank;

@@ -1,29 +1,54 @@
 import java.util.*;
 
+/**
+ * @author Mohammed
+ */
+
 public class Main {
 
     public static void main(String[] args) {
-        int before = (int) System.currentTimeMillis();
+        Scanner input = new Scanner(System.in);
+        int webpages, choice;
+        draw();
 
-        int webpages = 1000;
-        Server server = new Server(webpages);
+        System.out.print("Enter number of webpages: ");
+        webpages = input.nextInt();
 
-        createGraph(server);
-        server.printLinks();
+        System.out.println("1) Graph Enumeration\n2) PageRank Algorithm");
+        choice = input.nextInt();
 
-        PageRank pageRank = new PageRank(server);
-        pageRank.initializRanks();
-        pageRank.updateRanks();
-        pageRank.printRanks();
+        switch (choice) {
+            case 1:
+                long before = System.currentTimeMillis();
+                NonIsomorphic nonIsomorphic = new NonIsomorphic(webpages);
+                System.out.print("\nNon-Isomorphic graphs of " + webpages + " vertices = "
+                        + nonIsomorphic.getNumberOfNonIsomorphic());
+                long after = System.currentTimeMillis();
+                System.out.println("\nCalculation Completed on: " + (after - before) + "ms.");
+                break;
 
-        //Project Example
-        //testAlg(server);
+            case 2:
+                before = System.currentTimeMillis();
+                Server server = new Server(webpages);
 
-        int after = (int) System.currentTimeMillis();
-        System.out.println("\nCompleted on: " + (after - before) + "ms.");
+                createGraph(server);
+                server.printLinks();
+
+                PageRank pageRank = new PageRank(server);
+                pageRank.initializRanks();
+                pageRank.updateRanks();
+                pageRank.printRanks();
+
+                after = System.currentTimeMillis();
+                System.out.println("\nPageRank Algorithm Completed on: " + (after - before) + "ms.");
+                break;
+
+            default:
+                System.out.println("Invalid choice !");
+        }
+
 
     }
-
 
     //Single Link
     public static void createGraph(Server server) {
@@ -47,7 +72,7 @@ public class Main {
 
 
     //Multiple Links
-    /*public static void createGraph(Server server) {
+    public static void createGraphMul(Server server) {
         Random random = new Random();
         int r, size = server.numberOfWebpages;
         boolean check = false;
@@ -67,7 +92,9 @@ public class Main {
             }
             tempLinks.clear();
         }
-    }*/
+    }
+
+    //Test Algorithm on Project Example
     private static void testAlg(Server server) {
         server.addLink(0, 1);
         server.addLink(0, 2);
@@ -85,6 +112,17 @@ public class Main {
 
 
     }
+
+    public static void draw() {
+        System.out.println("\n" +
+                "  ____                  ____             _         _    _                  _ _   _               \n" +
+                " |  _ \\ __ _  __ _  ___|  _ \\ __ _ _ __ | | __    / \\  | | __ _  ___  _ __(_) |_| |__  _ __ ___  \n" +
+                " | |_) / _` |/ _` |/ _ \\ |_) / _` | '_ \\| |/ /   / _ \\ | |/ _` |/ _ \\| '__| | __| '_ \\| '_ ` _ \\ \n" +
+                " |  __/ (_| | (_| |  __/  _ < (_| | | | |   <   / ___ \\| | (_| | (_) | |  | | |_| | | | | | | | |\n" +
+                " |_|   \\__,_|\\__, |\\___|_| \\_\\__,_|_| |_|_|\\_\\ /_/   \\_\\_|\\__, |\\___/|_|  |_|\\__|_| |_|_| |_| |_| v1.0\n" +
+                "             |___/                                        |___/                                  \n");
+    }
+
 
 }
 

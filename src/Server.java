@@ -1,5 +1,9 @@
 import java.util.LinkedList;
 
+/**
+ * @author Mohammed
+ */
+
 public class Server {
     int numberOfWebpages;
     LinkedList<Integer> webpages[];
